@@ -125,47 +125,57 @@
 
 ## Git部分问题
 
-1. Authetication failed for "https://........................"
+### 1.Authetication failed for "https://........................"
 
-    ![](./%5Cfigure%5C1.png)
+![](./%5Cfigure%5C1.png)
 
-   参考：这一部分可能是由于token过期导致的，解决办法是重新生成新的token，可以参考下面链接[[关于Support for password authentication was removed 报错的解决方案](https://blog.51cto.com/u_13657808/5658164?u_atoken=a45684e9-77d4-4054-afb0-3a8c3f8466a2&u_asession=010wy8Ubf6eZ7BjXRyDJaN22WU7DNIe7ajY4aMwXg45QB6DXyp9nN0eu63MeXKW6B2X0KNBwm7Lovlpxjd_P_q4JsKWYrT3W_NKPr8w6oU7K-Af6RNkQpZJLc8jc8BaPREhVaMhQoQvxDmSarRnKyUVWBkFo3NEHBv0PZUm6pbxQU&u_asig=05qQYhRevD29F9Yl3kQGqbE__I86TXIE2N8vOvPQEySbU2B5RGCAHDtZU6SIcDlyGMfqVa0FAwl5mevb5WrV-vkw9jZ77EaGf3P1GxtGoVsCM9MQngXAafEmvaIwxjeeJkE6EX8na4df6XzeZHozUuYp7Rk1ze6aq6WNyzaNo8A-39JS7q8ZD7Xtz2Ly-b0kmuyAKRFSVJkkdwVUnyHAIJzV-LiEy8mTGwaE8JoxHl7taLztSBaNSwHP3nQ8utQlXiCNkNfzbmXGypMDlqpKRYAO3h9VXwMyh6PgyDIVSG1W_48ihTmF3uWhiYbJydy2oSNPiAmCOnVC6hPCK1rmxyar5DRbwl68DFzZK_2RItRKzMbAA4VR66HSlUVc2kX3IsmWspDxyAEEo4kbsryBKb9Q&u_aref=lNkCeCX4pINPMp5%2FgBOcjU4GGE0%3D)]，解决后，输入下面指令：
+参考：这一部分可能是由于token过期导致的，解决办法是重新生成新的token，可以参考下面链接[[关于Support for password authentication was removed 报错的解决方案](https://blog.51cto.com/u_13657808/5658164?u_atoken=a45684e9-77d4-4054-afb0-3a8c3f8466a2&u_asession=010wy8Ubf6eZ7BjXRyDJaN22WU7DNIe7ajY4aMwXg45QB6DXyp9nN0eu63MeXKW6B2X0KNBwm7Lovlpxjd_P_q4JsKWYrT3W_NKPr8w6oU7K-Af6RNkQpZJLc8jc8BaPREhVaMhQoQvxDmSarRnKyUVWBkFo3NEHBv0PZUm6pbxQU&u_asig=05qQYhRevD29F9Yl3kQGqbE__I86TXIE2N8vOvPQEySbU2B5RGCAHDtZU6SIcDlyGMfqVa0FAwl5mevb5WrV-vkw9jZ77EaGf3P1GxtGoVsCM9MQngXAafEmvaIwxjeeJkE6EX8na4df6XzeZHozUuYp7Rk1ze6aq6WNyzaNo8A-39JS7q8ZD7Xtz2Ly-b0kmuyAKRFSVJkkdwVUnyHAIJzV-LiEy8mTGwaE8JoxHl7taLztSBaNSwHP3nQ8utQlXiCNkNfzbmXGypMDlqpKRYAO3h9VXwMyh6PgyDIVSG1W_48ihTmF3uWhiYbJydy2oSNPiAmCOnVC6hPCK1rmxyar5DRbwl68DFzZK_2RItRKzMbAA4VR66HSlUVc2kX3IsmWspDxyAEEo4kbsryBKb9Q&u_aref=lNkCeCX4pINPMp5%2FgBOcjU4GGE0%3D)]，解决后，输入下面指令：
 
-   `git remote set-url origin https://<token>@github.com/name/repo`
+`git remote set-url origin https://<token>@github.com/name/repo`
 
-   ![](./%5Cfigure%5C2.png)
+![](./%5Cfigure%5C2.png)
 
-2. fatal: The remote end hung up unexpectedly
+### 2.fatal: The remote end hung up unexpectedly
 
-   参考：原因可能是因为项目推送的文件过大，此时需要修改git config文件中postBuffer文件的大小，使用下面命令：
+参考：原因可能是因为项目推送的文件过大，此时需要修改git config文件中postBuffer文件的大小，使用下面命令：
 
-   `git config --local http.postBuffer 52428800`
+`git config --local http.postBuffer 52428800`
 
-   具体看考下面链接[[Git：解决报错：fatal: The remote end hung up unexpectedly](https://blog.csdn.net/u013250071/article/details/81203900)]
-   
-3. 关于推代码时出现下图错误，可能是由于token不对引起的
+具体看考下面链接[[Git：解决报错：fatal: The remote end hung up unexpectedly](https://blog.csdn.net/u013250071/article/details/81203900)]
 
-    ![](./%5Cfigure%5C3.png)
+### 3.关于推代码时出现下图错误，可能是由于token不对引起的
 
-    此时一个比较好的办法是：
+![](./%5Cfigure%5C3.png)
 
-    a. 更新token，拷贝；
+此时一个比较好的办法是：
 
-    b. 当git需要输入密码的时候，直接把token拷贝上去就可以了。
+a. 更新token，拷贝；
 
-    参考：[Git操作相关问题（pull/push/clone/）](https://blog.csdn.net/qq_43665602/article/details/126045006)
-    
-4. 下载好git却找不到id_rsa.pub
+b. 当git需要输入密码的时候，直接把token拷贝上去就可以了。
 
-    > 参考：[下载好git却找不到id_rsa.pub](https://blog.csdn.net/changyana/article/details/125567861)
+参考：[Git操作相关问题（pull/push/clone/）](https://blog.csdn.net/qq_43665602/article/details/126045006)
 
-    由于在新电脑需要上传代码到github，新下载了git配置[ssh](https://so.csdn.net/so/search?q=ssh&spm=1001.2101.3001.7020)时却找不到id_rsa.pub，这是由于当前电脑还没有生成相关的密钥。
+### 4.下载好git却找不到id_rsa.pub
 
-    a. 首先需要在当前想要上传的文件目录下打开git，一般git下载好后就可以通过右键来打开
+> 参考：[下载好git却找不到id_rsa.pub](https://blog.csdn.net/changyana/article/details/125567861)
 
-    b. 输入命令`ssh-keygen -t rsa -b 4096 -C "邮箱"`，这里的邮箱替换成你自己的邮箱
+由于在新电脑需要上传代码到github，新下载了git配置[ssh](https://so.csdn.net/so/search?q=ssh&spm=1001.2101.3001.7020)时却找不到id_rsa.pub，这是由于当前电脑还没有生成相关的密钥。
 
-    c. 连按三次回车，然后就可以创建成功
+a. 首先需要在当前想要上传的文件目录下打开git，一般git下载好后就可以通过右键来打开
+
+b. 输入命令`ssh-keygen -t rsa -b 4096 -C "邮箱"`，这里的邮箱替换成你自己的邮箱
+
+c. 连按三次回车，然后就可以创建成功
+
+### 5.HttpRequestException encountered解决方法
+
+> 参考：[HttpRequestException encountered解决方法](https://www.codeprj.com/blog/b71ee71.html)
+
+每次pull代码的时候，总是要输入账号，密码，百度了一下HttpRequestException encountered错误
+
+发现是Github 禁用了TLS v1.0 and v1.1，必须更新Windows的git凭证管理器。
+
+![](./%5Cfigure%5C5.png)
 
 ## Git部分参考
 

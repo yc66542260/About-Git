@@ -154,6 +154,18 @@
     b. 当git需要输入密码的时候，直接把token拷贝上去就可以了。
 
     参考：[Git操作相关问题（pull/push/clone/）](https://blog.csdn.net/qq_43665602/article/details/126045006)
+    
+4. 下载好git却找不到id_rsa.pub
+
+    > 参考：[下载好git却找不到id_rsa.pub](https://blog.csdn.net/changyana/article/details/125567861)
+
+    由于在新电脑需要上传代码到github，新下载了git配置[ssh](https://so.csdn.net/so/search?q=ssh&spm=1001.2101.3001.7020)时却找不到id_rsa.pub，这是由于当前电脑还没有生成相关的密钥。
+
+    a. 首先需要在当前想要上传的文件目录下打开git，一般git下载好后就可以通过右键来打开
+
+    b. 输入命令`ssh-keygen -t rsa -b 4096 -C "邮箱"`，这里的邮箱替换成你自己的邮箱
+
+    c. 连按三次回车，然后就可以创建成功
 
 ## Git部分参考
 
@@ -164,4 +176,6 @@
 [3] [Git 五分钟教程](https://www.runoob.com/w3cnote/git-five-minutes-tutorial.html)
 
 [4] [Git简明指南](https://www.runoob.com/manual/git-guide/)
+
+[5] [Git远程仓库][(https://www.runoob.com/git/git-remote-repo.html)]
 

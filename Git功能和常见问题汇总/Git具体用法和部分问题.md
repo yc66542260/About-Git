@@ -94,7 +94,34 @@
     git stash pop stash@{1} #恢复指定的进度到工作区。stash_id是通过git stash list命令得到的
     ```
 
-    
+
+### 2. Git删除远程文件夹或文件
+
+> [git删除远程文件夹或文件](https://blog.csdn.net/bananachong/article/details/126698847)
+
+1.操作
+
+预览将要删除的文件（如果不清楚该目录下是否存在不应该删除的文件），
+
+加上 -n 这个参数，执行命令时，是不会删除任何文件，而是展示此命令要删除的文件列表预览。
+
+1. `git rm -r -n --cached` 文件/文件夹名称
+
+2.确定无误后删除文件（本地的文件或文件夹不会被删除）
+
+2. git rm -r --cached 文件/文件夹名称
+
+3.提交到本地代码
+
+3. git commit -m "提交说明"
+
+4.推送到远程服务器
+
+4. git push origin master
+
+删除logs文件夹为例子：
+
+![](./%5Cfigure%5C4.png)
 
 ## Git部分问题
 
@@ -115,6 +142,18 @@
    `git config --local http.postBuffer 52428800`
 
    具体看考下面链接[[Git：解决报错：fatal: The remote end hung up unexpectedly](https://blog.csdn.net/u013250071/article/details/81203900)]
+   
+3. 关于推代码时出现下图错误，可能是由于token不对引起的
+
+    ![](./%5Cfigure%5C3.png)
+
+    此时一个比较好的办法是：
+
+    a. 更新token，拷贝；
+
+    b. 当git需要输入密码的时候，直接把token拷贝上去就可以了。
+
+    参考：[Git操作相关问题（pull/push/clone/）](https://blog.csdn.net/qq_43665602/article/details/126045006)
 
 ## Git部分参考
 

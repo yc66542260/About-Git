@@ -54,6 +54,9 @@ sudo gedit /etc/ld.so.conf.d/open.conf
 /usr/local/opencv4.4.0/lib     # 保存退出
 
 sudo ldconfig     
+
+
+以下应该是不需要的
 sudo gedit /etc/bash.bashrc     # 这一步也会弹出文档，输入     
 PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/opencv4.4.0/lib/pkgconfig     
 export PKG_CONFIG_PATH     # 保存退出

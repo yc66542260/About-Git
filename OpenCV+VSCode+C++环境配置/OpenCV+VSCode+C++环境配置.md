@@ -175,3 +175,13 @@ c_cpp_properties.json文件
 
 6.一些重要的参考
 
+> 1.[Vscode配置opencv(简洁)](https://blog.csdn.net/qq_45022687/article/details/120949170)
+>
+> 2.[VSCode配置 c++ 环境（小白教程）](https://blog.csdn.net/Zhouzi_heng/article/details/115014059)
+>
+> 3.[win10 系统 VSCODE 配置opencv](https://blog.csdn.net/scott198510/article/details/125843447)
+>
+> 4.[win10下VSCode配置opencv4.4.0（超详细教程，亲测有效）](http://www.javashuo.com/article/p-rjxqoufk-nx.html)
+>
+> 5.
+

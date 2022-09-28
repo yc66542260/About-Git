@@ -1,0 +1,2 @@
+VMware Workstation 与 Device/Credential Guard 不兼容
+https://blog.csdn.net/qq_35812205/article/details/121050789

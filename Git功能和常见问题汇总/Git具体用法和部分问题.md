@@ -2,6 +2,14 @@
 
 # Git具体用法和部分问题
 
+## Git比较扯的特性
+
+1.使用Git时，如果环境时Windows，那么所有的换行符都会自动转换为windows下面的换行符，即`\r\n`，而环境如果是Linux的话，那么将保持原有的换行符不变。如果在windows上面下载源码在linux下编译运行等，则在git中需要设置如下命令：
+
+`git config –global core.autocrlf input`
+
+这些在clone下来的代码就保持原仓库换行符了。
+
 ## Git具体用法
 
 ### 1. Git 本地init后通过push推到远程仓库

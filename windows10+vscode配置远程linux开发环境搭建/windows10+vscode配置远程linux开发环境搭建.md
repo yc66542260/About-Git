@@ -55,3 +55,55 @@
 ![](./%5C2.png)
 
 这些参数都需要进行设置，所以远端需要有cmake和gcc等工具链才能调试。
+
+## 关于ssh一些问题
+
+在windows中，首先需要安装ssh，具体方式可以参考以下博文：
+
+[win安装SSH](https://blog.csdn.net/orDream/article/details/122915148)
+
+在此基础上才可以进一步测试主机和服务器之间的联系
+
+## 关于登陆密码重复输入的问题
+
+可以设置ssh密匙，从而解决相关问题，不必每次登陆都输入密码，具体参考以下博文：
+
+> [[基于VSCode的C++远程开发环境搭建教程](https://www.cnblogs.com/create-serenditipy/p/16191732.html)](https://www.cnblogs.com/create-serenditipy/p/16191732.html)
+
+### 免密登录远程主机
+
+通过上面的步骤，我们就完成了远程开发环境的搭建了，完全可以满足日常使用。但是，有一个基本的问题是，每次登录远程服务器都要输入密码，这也太麻烦了吧，接下来通过`ssh-keygen`和`ssh-copy-id`两条命令实现**免密登录远程服务器主机。**
+这儿先简单的介绍下免密登录（不关心原理的忽略下面这段话）
+
+> 免密登录，需要先在本机生成公钥，然后将本机公钥拷贝到远程主机，拷贝的过程，既可以手动（在远程主机主目录下创建.ssh目录，然后将公钥存入该目录下authorized_keys文件中即可），也可以使用命令`scp`或`ssh-copy-id`操作。操作完成后即可免密登录远程主机。
+
+#### 免密登录远程主机的操作步骤
+
+（1）在本机按下快捷键`Win + X`，选择`Windows PoweShell（管理员）`进入终端，再输入`ssh-keygen`命令，接着输入4次回车，就在本机的个人用户目录下生成了公钥。
+
+![](.\3.png)
+
+2）输入`ssh-copy-id -i C:\Users\yimen\.ssh\id_rsa.pub(这里改成你自己的公钥路径) 用户名@远程服务器IP`命令,即可把本地的ssh公钥文件安装到远程主机对应的账户下,并设置了合适的权限。
+以我本机为例：
+
+![](.\4.png)
+
+【**注意**】如果没有ssh-copy-id命令的话，win10会提示：
+
+> ssh-copy-id : “ssh-copy-id” 不是内部或外部命令，也不是可运行的程序
+
+解决方案是在`powershell`中，先执行以下内容：
+
+```shekll
+function ssh-copy-id([string]$userAtMachine, $args){   
+    $publicKey = "$ENV:USERPROFILE" + "/.ssh/id_rsa.pub"
+    if (!(Test-Path "$publicKey")){
+        Write-Error "ERROR: failed to open ID file '$publicKey': No such file"            
+    }
+    else {
+        & cat "$publicKey" | ssh $args $userAtMachine "umask 077; test -d .ssh || mkdir .ssh ; cat >> .ssh/authorized_keys || exit 1"      
+    }
+}
+```
+
+再次执行`ssh-copy-id -i C:\Users\yimen\.ssh\id_rsa.pub root（用户名）@192.168.10.66(服务器IP）`，根据提示输入密码即可。从此，连接远程服务器再也不用输入密码了。

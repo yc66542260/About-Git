@@ -50,6 +50,8 @@
 
 ## 关于调试：
 
+调试之前必须安装：C/C++ Extension Pack模块。
+
 表示也可以在主机端进行，但是需要重启，同时主机和远程都需要安装很多插件，同时远端需要安装编译器gcc。
 
 ![](./%5C2.png)
@@ -107,3 +109,4 @@ function ssh-copy-id([string]$userAtMachine, $args){
 ```
 
 再次执行`ssh-copy-id -i C:\Users\yimen\.ssh\id_rsa.pub root（用户名）@192.168.10.66(服务器IP）`，根据提示输入密码即可。从此，连接远程服务器再也不用输入密码了。
+

@@ -223,3 +223,5 @@ c. 连按三次回车，然后就可以创建成功
 
 [5] [Git远程仓库][(https://www.runoob.com/git/git-remote-repo.html)]
 
+[6] [gitee、github使用教程](https://blog.csdn.net/qq_56591814/article/details/122283459)
+

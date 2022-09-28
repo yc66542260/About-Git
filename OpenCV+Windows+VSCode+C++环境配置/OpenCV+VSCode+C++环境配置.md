@@ -16,7 +16,7 @@
 
 双击安装即可，选择环境变量即可。在windows环境下会自动安装CMAKE-GUI工具。
 
-![](./%5CFig%5C1.png)
+![](C:%5CUsers%5CRTT%5CDesktop%5Clearning%5CAbout-Tools%5COpenCV+Windows+VSCode+C++%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%5CFig%5C1.png)
 
 ## 2.安装OpenCV
 
@@ -32,11 +32,11 @@
 
 4.选择如下选项：
 
-![](./%5CFig%5C2.png)
+![](C:%5CUsers%5CRTT%5CDesktop%5Clearning%5CAbout-Tools%5COpenCV+Windows+VSCode+C++%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%5CFig%5C2.png)
 
 5.选择工具链：
 
-![](./%5CFig%5C3.png)
+![](C:%5CUsers%5CRTT%5CDesktop%5Clearning%5CAbout-Tools%5COpenCV+Windows+VSCode+C++%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%5CFig%5C3.png)
 
 6.在生成cmake文件后，使用cmd进行编译，这里需要注意：
 
@@ -48,7 +48,7 @@
 
 7.完成编译和安装后，我们将一下两个路径加入到环境变量：
 
-![](./%5CFig%5C4.png)
+![](C:%5CUsers%5CRTT%5CDesktop%5Clearning%5CAbout-Tools%5COpenCV+Windows+VSCode+C++%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%5CFig%5C4.png)
 
 ## 3.安装VSCode
 
@@ -62,11 +62,11 @@
 
 注意下载posix版本：
 
-![](./%5CFig%5C5.png)
+![](C:%5CUsers%5CRTT%5CDesktop%5Clearning%5CAbout-Tools%5COpenCV+Windows+VSCode+C++%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%5CFig%5C5.png)
 
 将其解压后放在D盘，然后加入到环境变量中。
 
-![](./%5CFig%5C6.png)
+![](C:%5CUsers%5CRTT%5CDesktop%5Clearning%5CAbout-Tools%5COpenCV+Windows+VSCode+C++%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%5CFig%5C6.png)
 
 ## 5.使用中的一点小贴士，在vscode中需要设置一些编译的选项，比如库的位置、头文件索引的位置等等
 
@@ -184,4 +184,3 @@ c_cpp_properties.json文件
 > 4.[win10下VSCode配置opencv4.4.0（超详细教程，亲测有效）](http://www.javashuo.com/article/p-rjxqoufk-nx.html)
 >
 > 5.
-

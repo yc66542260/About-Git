@@ -157,6 +157,126 @@
 
 （8）`**git stash clear** ：`删除所有缓存的stash
 
+### 4. Git ssh key 作用与配置
+
+> 重要参考：[Git ssh key 作用与配置](https://blog.csdn.net/qq_39366020/article/details/106431194)
+
+#### **作用：**
+
+**ssh指secure shell（一种安全的网络协议），git使用这种协议进行远程加密登录。**
+
+**ssh登录安全性由非对称加密保证，产生密钥时，一次产生两个密钥，一个公钥，一个私钥，在git中一般分别命名为id_rsa.pub, id_rsa**
+
+**ssh方式单独使用非对称的秘钥进行认证和加密传输，和账号密码分离开来，不需要账号也可以访问repo。**
+
+**git基于多种传输协议，其中最常用的就是https和ssh。都是为了数据传输安全，那么设置ssh密钥的目的是为了节省输入用户名密码的过程，同时保证传输安全。并不是必须设置。**
+
+#### 配置过程:
+
+##### 1. git config 配置
+
+终端执行下列命令：
+
+```bash
+git config --global  user.name "你的用户名"
+git config --global user.email "你的邮箱"
+```
+
+这里的用户名和邮箱最后和你的github账户一致，下面是一个例子。
+
+```bash
+git config --global  user.name "Mike"
+git config --global user.email "123@gmail.com"
+```
+
+这样你的用户名和邮箱将被设置为`Mike`和`123@gmail.com`
+
+使用下列命令可以查看已配置信息。
+
+```bash
+git config --global --list
+```
+
+### 2. 秘钥生成
+
+首先查看你的主目录`~`下是否含有`.ssh`文件路径，以及`.ssh`文件路径下是否含有以 id_dsa 或 id_rsa 命名的文件，其中一个带有 .pub 扩展名。.pub 文件是你的[公钥](https://so.csdn.net/so/search?q=公钥&spm=1001.2101.3001.7020)，另一个则是私钥。
+
+可以在终端运行下列命令进行快速查看：
+
+```bash
+ls ~/.ssh
+```
+
+如果提示没有该目录，或者该目录下没有公[私钥](https://so.csdn.net/so/search?q=私钥&spm=1001.2101.3001.7020)文件，说明还未生成过密钥。
+
+如果存在可以直接使用，跳到本步骤。但也可以选择重新生成[密钥](https://so.csdn.net/so/search?q=密钥&spm=1001.2101.3001.7020)，将之前的覆盖。
+
+执行下列命令生成密钥：
+
+```bash
+ssh-keygen -t rsa -C "你的邮箱"
+```
+
+中途需要进行3次或4次确认：
+
+- 秘钥的保存路径，不更改则直接回车
+- 是否覆盖上一次生成的密钥（若之前已经生成过）
+- 密码（若不设置则直接回车）
+- 确认密码
+
+建议路径使用默认配置，密码不设置。这样每次`git push`等操作都不需要输入密码，比较方便。
+
+下面是生成过程的图片。
+
+![](./%5Cfigure%5C10.png)
+
+若是用默认路径则在`~/.ssh`路径下将看到两个新生成的文件。
+
+![](./%5Cfigure%5C11.png)
+
+至此已经生成好了ssh密匙，具体如何设置github账户上的密匙，参考5。
+
+### 5.github端添加公钥
+
+> 重要参考：[gitHub添加公钥](https://blog.csdn.net/qq_38819293/article/details/120677495)
+
+1、删除所有原有的SSH Key**（可选）**
+
+首先，清除所有的key-pair `ssh-add -D rm -r ~/.ssh` 删除你在github中的public-key
+
+重新生成ssh密钥对 `ssh-keygen -t rsa -C "[xxx@xxx.com](mailto:xxx@xxx.com)"`
+
+`chmod 0700 ~/.ssh` 和 `chmod 0600 ~/.ssh/id_rsa*` 接下来正常操作在github上添加公钥public-key:
+
+**注意**
+
+如果执行ssh-add时出现Could not open a connection to your authentication agent
+
+在执行 `ssh-add ~/.ssh/id_ras` 时发生此错，
+
+执行如下命令　`ssh-agent bash`
+
+然后再执行 `ssh-add ~/.ssh/id_ras` 即可。
+
+**2、创建SSH Key**
+在windows下查看【C:\Users\Administrator.[ssh](https://so.csdn.net/so/search?q=ssh&spm=1001.2101.3001.7020)】当前.ssh文件夹里面是否有id_rsa、id_rsa.pub文件），若没有，就在当前目录打开git bash(需要安装Git)，输入
+ssh-keygen -t [rsa](https://so.csdn.net/so/search?q=rsa&spm=1001.2101.3001.7020) -C “my-email.com”
+
+![](./%5Cfigure%5C6.png)
+
+其中，passphrase为密码，可输可不输（不输为空）
+**3、登录github**
+
+![](./%5Cfigure%5C7.png)
+
+在C盘User找到`id_rsa.pub`
+
+![](./%5Cfigure%5C8.png)
+
+将id_rsa.pub输入到
+
+![](./%5Cfigure%5C9.png)
+
 ## Git部分问题
 
 ### 1.Authetication failed for "https://........................"

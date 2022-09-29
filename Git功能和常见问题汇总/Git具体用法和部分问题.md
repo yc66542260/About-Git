@@ -10,6 +10,42 @@
 
 这些在clone下来的代码就保持原仓库换行符了。
 
+### 关于Git总连接补上的处理方法
+
+可能遇到的报错：
+
+`OpenSSL SSL_read:Connection was reset, errno 10054`
+
+`Failed to connect to 127.0.0.1 port 1080: Connection refused`
+
+此时说明Git连接远程仓库失败了。
+
+- 首先要有一个代理
+
+- 查看vpn的代理端口如：
+
+  ![](./%5Cfigure%5C12.png)
+
+- 在git bash里面运行如下命令：
+
+  `git config --global http(s).proxy 127.0.0.1:端口号`
+
+- 可能用到的命令：
+
+   默认不设置代理：
+
+  ```
+  git config --global --unset http.proxy
+  git config --global --unset https.proxy
+  ```
+
+   设置其他端口号
+
+  ```
+  git config –global http.proxy 127.0.0.1: 端口号
+  git config –global https.proxy 127.0.0.1: 端口号
+  ```
+
 ## Git具体用法
 
 ### 1. Git 本地init后通过push推到远程仓库

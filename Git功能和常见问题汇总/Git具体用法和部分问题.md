@@ -211,6 +211,26 @@ c. 连按三次回车，然后就可以创建成功
 
 ![](./%5Cfigure%5C5.png)
 
+### 6.git pull 强制覆盖本地代码
+
+`git pull` 强制覆盖本地的代码方式，下面是正确的方法：
+
+`git fetch --all`
+
+然后，你有两个选择：
+
+`git reset --hard origin/master`
+
+或者如果你在其他分支上：
+
+`git reset --hard origin/<branch_name>`
+
+说明：
+
+`git fetch`从远程下载最新的，而不尝试合并或rebase任何东西。
+
+然后`git reset`将主分支重置为您刚刚获取的内容。 --hard选项更改工作树中的所有文件以匹配origin/master中的文件。
+
 ## Git部分参考
 
 [1] [Git教程](https://www.runoob.com/git/git-tutorial.html)
